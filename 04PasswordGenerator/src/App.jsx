@@ -21,7 +21,7 @@ function App() {
     if (NumberAllowed) str += "0123456789"
     if (CharAllowed) str += "!@#$%^&*()`"
 
-    for (let i = 1; i < Length; i++) {
+    for (let i = 0; i < Length; i++) {
       let char = Math.floor(Math.random() * str.length + 1)
       pass += str.charAt(char)
     }
@@ -30,11 +30,11 @@ function App() {
 
   }, [Length, NumberAllowed, CharAllowed, setPassword])
 
-  const copypasswordtoclipboard = useCallback(() => {
+  const copypasswordtoclipboard = useCallback(() => {   
     window.navigator.clipboard.writeText(Password)
   }, [Password])
 
-  useEffect(() => { PasswordGenerator() }, [length, NumberAllowed, NumberAllowed, PasswordGenerator])
+  useEffect(() => { PasswordGenerator() }, [Length, NumberAllowed, CharAllowed, PasswordGenerator])
   return (
     <>
       <div className='w-full text-center max-w-md mx-auto shadow-md rounded-lg px-4 my-8 text-orange-600 bg-gray-600'>
